@@ -12,9 +12,17 @@ const insert = (newBlog: { title: string, content: string, authorid: number }) =
     Query('INSERT INTO blogs SET ?', newBlog);
     
     
+const update = (editedBlog: { tilte: string, content: string }, id: number) =>
+    Query('UPDATE blogs SET ? WHERE id = ?', [editedBlog, id]);
 
-export default {
+
+const destroy = (id: number) => Query('DELETE FROM blogs WHERE id = ?', [id]);
+
+
+    export default {
     all,
     one,
-    insert
+    insert,
+    update,
+    destroy
 };
